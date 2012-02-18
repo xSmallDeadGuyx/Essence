@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>player.png</Source>
+      <Name>player</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\Visual Studio 2010\Projects\Essence\Essence\Essence\bin\x86\Debug\Content\player.xnb</Output>
+      <Time>2012-01-12T10:59:35.3591005+00:00</Time>
+    </Item>
+    <Item>
+      <Source>grid.png</Source>
+      <Name>grid</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\Visual Studio 2010\Projects\Essence\Essence\Essence\bin\x86\Debug\Content\grid.xnb</Output>
+      <Time>2012-01-13T14:47:47.4134644+00:00</Time>
+    </Item>
+    <Item>
+      <Source>map.png</Source>
+      <Name>map</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\Visual Studio 2010\Projects\Essence\Essence\Essence\bin\x86\Debug\Content\map.xnb</Output>
+      <Time>2012-02-09T11:13:48.1130347+00:00</Time>
+    </Item>
+    <Item>
+      <Source>rock.png</Source>
+      <Name>rock</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\Visual Studio 2010\Projects\Essence\Essence\Essence\bin\x86\Debug\Content\rock.xnb</Output>
+      <Time>2012-01-17T09:22:41.7952821+00:00</Time>
+    </Item>
+    <Item>
+      <Source>grass.png</Source>
+      <Name>grass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\Visual Studio 2010\Projects\Essence\Essence\Essence\bin\x86\Debug\Content\grass.xnb</Output>
+      <Time>2012-01-17T09:14:32.5921931+00:00</Time>
+    </Item>
+    <Item>
+      <Source>path.png</Source>
+      <Name>path</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\Visual Studio 2010\Projects\Essence\Essence\Essence\bin\x86\Debug\Content\path.xnb</Output>
+      <Time>2012-01-17T09:39:26.564046+00:00</Time>
+    </Item>
+    <Item>
+      <Source>wood.png</Source>
+      <Name>wood</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\Visual Studio 2010\Projects\Essence\Essence\Essence\bin\x86\Debug\Content\wood.xnb</Output>
+      <Time>2012-01-17T15:47:33.9298881+00:00</Time>
+    </Item>
+    <Item>
+      <Source>woodfloor.png</Source>
+      <Name>woodfloor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Documents\Visual Studio 2010\Projects\Essence\Essence\Essence\bin\x86\Debug\Content\woodfloor.xnb</Output>
+      <Time>2012-01-17T15:52:17.91508+00:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\Alex\Documents\Visual Studio 2010\Projects\Essence\Essence\EssenceContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Alex\Documents\Visual Studio 2010\Projects\Essence\Essence\Essence\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Alex\Documents\Visual Studio 2010\Projects\Essence\Essence\EssenceContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Alex\Documents\Visual Studio 2010\Projects\Essence\Essence\Essence\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T12:41:18+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T12:41:18+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2011-08-06T21:06:57.453095+01:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>
