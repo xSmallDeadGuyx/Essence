@@ -53,7 +53,6 @@ namespace Essence {
 			if(!position.Equals(targetSpace)) moving = true;
 
 			if(moving) {
-				Console.WriteLine(speed + "m/s - (" + position.X + ", " + position.Y + "), (" + targetSpace.X + ", " + targetSpace.Y + ")");
 				if(position.X > targetSpace.X && dir == DIR_LEFT) {
 					if(nextDir == DIR_LEFT) position.X -= speed;
 					else position.X = Math.Abs(position.X - targetSpace.X) <= speed ? targetSpace.X : position.X - speed;
