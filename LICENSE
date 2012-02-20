@@ -1,0 +1,59 @@
+~~~~~~~~~~~~SDGPL - SmallDeadGuy's Public License~~~~~~~~~~~~~
+
+     Copyright (C) 2012 Alex Gilday (aka. SmallDeadGuy)
+ Everyone is permitted to copy and distribute verbatim copies
+   of this license document, but changing it is not allowed.
+
+                            Preamble
+
+   The SDGPL is a free public license I devised myself
+after searching for a license which allows the creation of
+modifications but without re-distribution rights of the whole
+source code.
+
+                           Definitions
+
+   "Copyright" also means copyright-like laws that apply to
+other kinds of works, such as semiconductor masks.
+
+   "The Program" refers to any copyrightable work licensed
+under this License. Each licensee is addressed as "you".
+"Licensees" and "recipients" may be individuals or
+organizations.
+
+   "Modifications" refer to changes of the source code that
+do not include the entire program as a whole (ie small
+patches and/or feature addition/removal).
+
+   "Total Conversions" refer to modifications of the entire
+program, such that it may be run without need of the
+original program or resemble previous applications of it.
+
+                       Terms and Conditions
+
+   The original program creator(s) have full rights to the
+work and have final decisions on distribution of any
+modifications, total conversions or small parts of the
+program. This includes the right to remove hosting of the
+code and/or program binaries that he/she has not permitted.
+
+   Sections of the source code may not be distributed
+unless modified for a specific purpose or permission is
+obtained from the program author.   
+
+   Any users of the program may not re-distribute it in it's
+entirety. Modifications may be made to the program, for
+example, adding features, but these modifications must be
+distributed as patches/additions to the code. Any
+modifications distributed may not be sold for a profit
+without permission given by the original author.
+
+   Total conversions of the program or the program itself may
+only be distributed by the original author unless permission
+is obtained first. Total conversions, like modifications, may
+be sold for a profit but only with permission from the
+original author.
+
+   The author reserves the right to remove access to the
+program from select people if he wishes, for reasons such as
+distributing without permission.
