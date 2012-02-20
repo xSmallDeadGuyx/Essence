@@ -3,13 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace Essence {
-
-	/*
-	 * Essence:
-	 *		
-	 *		The main game class, where all the magic happens
-	 */
 	public class Essence : Microsoft.Xna.Framework.Game {
+
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 
@@ -18,95 +13,57 @@ namespace Essence {
 		public World world;
 		public Controls controls = new Controls();
 
-		/*
-		 * Constructor:
-		 * 
-		 *		Used to initialize the graphics and setup basic screen window
-		 */
 		public Essence() {
-			graphics = new GraphicsDeviceManager(this); // initialize graphics
-			Content.RootDirectory = "Content"; // set content root
+			graphics = new GraphicsDeviceManager(this);
+			Content.RootDirectory = "Content";
 
-			graphics.PreferredBackBufferWidth = 656; // set screen width and height
+			graphics.PreferredBackBufferWidth = 656;
 			graphics.PreferredBackBufferHeight = 496;
-			graphics.IsFullScreen = false; // set not fullscreen
-			graphics.ApplyChanges(); // apply the above changes (refresh the screen buffer)
-			Window.Title = "Essence"; // set the window title
+			graphics.IsFullScreen = false;
+			graphics.ApplyChanges();
+			Window.Title = "Essence";
 		}
 
-		/*
-		 * Initialize:
-		 *		Return: none
-		 *		Arguments: none
-		 *		
-		 *		Used to initialize base variables
-		 */
 		protected override void Initialize() {
-			player = new Player(this); // setup player and world global variables
+			player = new Player(this);
 			world = new World(this);
 
-			base.Initialize(); // call initialize of parent class (Microsoft.Xna.Framework.Game)
+			base.Initialize();
 		}
 
-		/*
-		 * LoadContent:
-		 *		Return: none
-		 *		Arguments: none
-		 *		
-		 *		Used to load any sprites and other resources
-		 */
 		protected override void LoadContent() {
-			spriteBatch = new SpriteBatch(GraphicsDevice); // load spritebatch and camera
+			spriteBatch = new SpriteBatch(GraphicsDevice);
 			camera = new Camera(spriteBatch, this);
 
-			world.loadWorld(); // tell objects to load their content
+			world.loadWorld();
 			player.loadContent();
 		}
 
-		/*
-		 * UnloadContent:
-		 *		Return: none
-		 *		Arguments: none
-		 *		
-		 *		Used to unload any non-garbage-collected resources
-		 */
 		protected override void UnloadContent() {
 			// TODO: Unload any non ContentManager content here
 		}
 
-		/*
-		 * Update:
-		 *		Return: none
-		 *		Arguments: gameTime - allows for finding elapsed time and speed of the game
-		 *		
-		 *		Called on every frame for any game logic, the main executed code
-		 */
 		protected override void Update(GameTime gameTime) {
-			if(GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) // if back button is pressed, quit
+			if(GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
 				this.Exit();
 
-			world.update(gameTime); // call update of other objects
+			world.update(gameTime);
 			player.update(gameTime);
 
-			base.Update(gameTime); // call update of parent class
+			base.Update(gameTime);
 		}
 
-		/*
-		 * Draw:
-		 *		Return: none
-		 *		Arguments: gameTime - allows for finding elapsed time and speed of the game
-		 */
 		protected override void Draw(GameTime gameTime) {
-			GraphicsDevice.Clear(Color.Black); // set background to black and reset screen
+			GraphicsDevice.Clear(Color.Black);
 			
-			spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.LinearWrap, null, null); // start the sprite batch and wrap state
+			spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.LinearWrap, null, null);
 
-			world.draw(gameTime); //call the draw functions of other objects
+			world.draw(gameTime);
 			player.draw(gameTime);
 
-			spriteBatch.End(); // close the sprite batch
+			spriteBatch.End();
 
-			base.Draw(gameTime); // call Draw of parent class
+			base.Draw(gameTime);
 		}
 	}
 }

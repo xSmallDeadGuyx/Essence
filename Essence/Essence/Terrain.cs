@@ -8,10 +8,10 @@ namespace Essence {
 		public static Terrain[] terrainList = new Terrain[256];
 		public static Essence game;
 
-		public static TerrainSided rock = (TerrainSided) new TerrainSided(1).setTexture("rock").setReadColour(Color.Black);
-		public static TerrainSided path = (TerrainSided) new TerrainSided(2).setTexture("path").setReadColour(new Color(1.0F, 1.0F, 0.5F));
-		public static Terrain wood = new Terrain(3).setTexture("wood").setReadColour(Color.Blue);
-		public static Terrain woodFloor = new Terrain(4).setTexture("woodfloor").setReadColour(new Color(0.5F, 0.5F, 1.0F));
+		public static TerrainSided rock = (TerrainSided) new TerrainSided(1).setTexture("rock").setReadColour(Color.Black).setSolid(true);
+		public static TerrainSided path = (TerrainSided) new TerrainSided(2).setTexture("path").setReadColour(new Color(1.0F, 1.0F, 0.5F)).setSolid(false);
+		public static Terrain wood = new Terrain(3).setTexture("wood").setReadColour(Color.Blue).setSolid(true);
+		public static Terrain woodFloor = new Terrain(4).setTexture("woodfloor").setReadColour(new Color(0.5F, 0.5F, 1.0F)).setSolid(false);
 
 		public bool isSolid = false;
 		public byte terrainID;
@@ -43,6 +43,11 @@ namespace Essence {
 
 		public Terrain setReadColour(Color c) {
 			readCol = c;
+			return this;
+		}
+
+		public Terrain setSolid(bool s) {
+			isSolid = s;
 			return this;
 		}
 	}

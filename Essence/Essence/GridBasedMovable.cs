@@ -33,8 +33,15 @@ namespace Essence {
 			targetSpace = new Vector2(dir == DIR_LEFT ? position.X - speed - (position.X - speed < 0 ? 16 + ((position.X - speed) % 16) : (position.X - speed) % 16) : (dir == DIR_RIGHT ? position.X + speed + 16 - (position.X + speed < 0 ? 16 + ((position.X + speed) % 16) : (position.X + speed) % 16) : position.X), dir == DIR_UP ? position.Y - speed - (position.Y - speed < 0 ? 16 + ((position.Y - speed) % 16) : (position.Y - speed) % 16) : (dir == DIR_DOWN ? position.Y + speed + 16 - (position.Y + speed < 0 ? 16 + ((position.Y + speed) % 16) : (position.Y + speed) % 16) : position.Y));
 		}
 
+		public bool atOrPastTargetSpace() {
+			return (dir == DIR_LEFT && position.X <= targetSpace.X) ||
+					(dir == DIR_RIGHT && position.X >= targetSpace.X) ||
+					(dir == DIR_UP && position.Y <= targetSpace.Y) ||
+					(dir == DIR_DOWN && position.Y >= targetSpace.Y);
+		}
+
 		public void updateMovement() {
-			if(position.Equals(targetSpace) && (nextDir != dir || moving)) {
+			if((position.Equals(targetSpace) || atOrPastTargetSpace()) && (nextDir != dir || moving)) {
 				dir = nextDir;
 				recalcTarget();
 
@@ -46,6 +53,7 @@ namespace Essence {
 			if(!position.Equals(targetSpace)) moving = true;
 
 			if(moving) {
+				Console.WriteLine(speed + "m/s - (" + position.X + ", " + position.Y + "), (" + targetSpace.X + ", " + targetSpace.Y + ")");
 				if(position.X > targetSpace.X && dir == DIR_LEFT) {
 					if(nextDir == DIR_LEFT) position.X -= speed;
 					else position.X = Math.Abs(position.X - targetSpace.X) <= speed ? targetSpace.X : position.X - speed;

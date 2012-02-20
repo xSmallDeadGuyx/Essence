@@ -1,2 +1,0 @@
-C:\Users\Alex\Documents\Visual Studio 2010\Projects\Nodes\Nodes\NodesContent\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Alex\Documents\Visual Studio 2010\Projects\Essence\Essence\EssenceContent\obj\x86\Debug\ResolveAssemblyReference.cache
