@@ -12,6 +12,8 @@ namespace Essence {
 		public static TerrainSided path = (TerrainSided) new TerrainSided(2).addSide(2).setTexture("path").setReadColour(new Color(1.0F, 1.0F, 0.5F)).setSolid(false);
 		public static TerrainSided building1 = (TerrainSided) new TerrainSided(3).addSide(3).addSide(4).setTexture("building1").setReadColour(Color.Blue).setSolid(true);
 		public static Terrain building1door = new Terrain(4).setTexture("door1").setReadColour(new Color(0.5F, 0.5F, 1.0F)).setSolid(false);
+		public static Terrain bin = new Terrain(5).setTexture("bin").setReadColour(new Color(0.5F, 0.5F, 0.5F)).setSolid(true);
+		//public static TerrainSided template = (TerrainSided) new TerrainSided(6).addSide(6).setTexture("template").setReadColour(new Color(192, 192, 192)).setSolid(true);
 
 		public bool isSolid = false;
 		public byte terrainID;

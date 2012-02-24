@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Essence {
 	public class Essence : Microsoft.Xna.Framework.Game {
@@ -62,6 +63,11 @@ namespace Essence {
 			player.draw(gameTime);
 
 			spriteBatch.End();
+
+			int fps = 0;
+			fps = (int) Math.Round((1.0F / gameTime.ElapsedGameTime.Milliseconds) * 1000.0F);
+
+			Window.Title = "Essence - " + fps;
 
 			base.Draw(gameTime);
 		}

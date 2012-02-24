@@ -16,7 +16,7 @@ namespace Essence {
 
 		public int dir = DIR_DOWN;
 
-		public Vector2 position = new Vector2(320, 320);
+		public Vector2 position;
 		public bool moving = false;
 		public int speed = 1;
 		private Vector2 targetSpace;
@@ -27,6 +27,12 @@ namespace Essence {
 			game = essence;
 			nextDir = dir;
 			targetSpace = position;
+		}
+
+		public void setPositionAndSnap(Vector2 pos) {
+			if(pos.X % 16 != 0) pos.X = (float) Math.Round(pos.X / 16) * 16;
+			if(pos.Y % 16 != 0) pos.Y = (float) Math.Round(pos.Y / 16) * 16;
+			position = targetSpace = pos;
 		}
 
 		public void recalcTarget() {

@@ -26,12 +26,22 @@ namespace Essence {
 			dir = 0;
 		}
 
+		public void changeWorld(int id) {
+			Map nextMap = game.world.maps[id];
+			if(nextMap != null && id != world) {
+				position = nextMap.getPlayerStartPos(world);
+				world = id;
+			}
+		}
+
 		public void loadContent() {
 			sprite = game.Content.Load<Texture2D>("player");
 			frames = new Rectangle[sprite.Width / 16, sprite.Height / 16];
 
 			for(int j = 0; j <= frames.GetUpperBound(1); j++) for(int i = 0; i <= frames.GetUpperBound(0); i++)
 				frames[i, j] = new Rectangle(i * 16, j * 16, 16, 16);
+
+			setPositionAndSnap(game.world.maps[world].getPlayerStartPos(world));
 		}
 
 		public void update(GameTime gt) {
