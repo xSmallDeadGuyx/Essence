@@ -9,13 +9,22 @@ namespace Essence {
 
 		private Vector2 cameraPosition;
 
+		public Vector2 position {
+			get {
+				return cameraPosition;
+			}
+			set {
+				setPosition(value);
+			}
+		}
+
 		public Camera(SpriteBatch sb, Essence essence) {
 			spriteBatch = sb;
 			game = essence;
 			cameraPosition = new Vector2(0, 0);
 		}
 
-		public void setPosition(Vector2 vec) {
+		private void setPosition(Vector2 vec) {
 			cameraPosition = vec - new Vector2(spriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth/2, spriteBatch.GraphicsDevice.PresentationParameters.BackBufferHeight/2); // set the position of the camera
 			if(!game.world.maps[game.player.world].cameraOverflow) { // if camera is not able to overflow on current world map
 				if(cameraPosition.X < 0) cameraPosition.X = 0; // if camera is too far left, move to the minimum
@@ -23,10 +32,6 @@ namespace Essence {
 				if(cameraPosition.X + game.GraphicsDevice.PresentationParameters.BackBufferWidth > game.world.maps[game.player.world].data.GetUpperBound(0) * 16 + 16) cameraPosition.X = game.world.maps[game.player.world].data.GetUpperBound(0) * 16 + 16 - game.GraphicsDevice.PresentationParameters.BackBufferWidth; // if camera is too far to the right, move to the maximum
 				if(cameraPosition.Y + game.GraphicsDevice.PresentationParameters.BackBufferHeight > game.world.maps[game.player.world].data.GetUpperBound(1) * 16 + 16) cameraPosition.Y = game.world.maps[game.player.world].data.GetUpperBound(1) * 16 + 16 - game.GraphicsDevice.PresentationParameters.BackBufferHeight; // if camera is too far to the bottom, move to the maximum
 			}
-		}
-
-		public Vector2 getPosition() {
-			return cameraPosition;
 		}
 
 		public bool isOnScreen(Texture2D tex, Vector2 pos) {

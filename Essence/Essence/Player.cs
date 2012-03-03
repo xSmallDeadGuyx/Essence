@@ -49,14 +49,14 @@ namespace Essence {
 			moving = game.controls.leftPressed || game.controls.rightPressed || game.controls.upPressed || game.controls.downPressed;
 			
 			nextDir = dir;
-			if(game.controls.leftPressed) nextDir = DIR_LEFT;
-			if(game.controls.rightPressed) nextDir = DIR_RIGHT;
-			if(game.controls.upPressed) nextDir = DIR_UP;
-			if(game.controls.downPressed) nextDir = DIR_DOWN;
+			if(game.controls.leftPressed) nextDir = Dir.Left;
+			if(game.controls.rightPressed) nextDir = Dir.Right;
+			if(game.controls.upPressed) nextDir = Dir.Up;
+			if(game.controls.downPressed) nextDir = Dir.Down;
 
 			updateMovement();
 
-			game.camera.setPosition(position - new Vector2(8, 8));
+			game.camera.position = position - new Vector2(8, 8);
 		}
 
 		public void draw(GameTime gt) {
@@ -71,7 +71,7 @@ namespace Essence {
 			}
 			else frame = 1;
 
-			game.camera.draw(sprite, position, frames[frame, dir], Color.White);
+			game.camera.draw(sprite, position, frames[frame, (int) dir], Color.White);
 		}
 	}
 }

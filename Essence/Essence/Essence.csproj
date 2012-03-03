@@ -112,6 +112,7 @@
     <Compile Include="Camera.cs" />
     <Compile Include="Controls.cs" />
     <Compile Include="GridBasedMovable.cs" />
+    <Compile Include="IntBools.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="TerrainSided.cs" />
     <Compile Include="Player.cs" />

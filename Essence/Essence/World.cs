@@ -24,7 +24,7 @@ namespace Essence {
 		public void draw(GameTime gt) {
 			game.camera.draw(grassTex, Vector2.Zero, new Rectangle(0, 0, maps[game.player.world].data.GetLength(0) * 16, maps[game.player.world].data.GetLength(1) * 16), Color.White);
 
-			Vector2 cameraPos = game.camera.getPosition();
+			Vector2 cameraPos = game.camera.position;
 			for(int i = (int) cameraPos.X / 16; i < ((int) (cameraPos.X + game.GraphicsDevice.PresentationParameters.BackBufferWidth) / 16) + 1; i++) for(int j = (int) cameraPos.Y / 16; j < (int) (cameraPos.Y + game.GraphicsDevice.PresentationParameters.BackBufferHeight) / 16 + 1; j++)
 					if(i < maps[game.player.world].data.GetLength(0) && j < maps[game.player.world].data.GetLength(1) && i >= 0 && j >= 0 && Terrain.terrainList[maps[game.player.world].data[i, j]] != null)
 					Terrain.terrainList[maps[game.player.world].data[i, j]].draw(gt, new Vector2(i, j));
@@ -33,7 +33,7 @@ namespace Essence {
 		public void update(GameTime gt) {
 			game.controls.update(gt);
 
-			Vector2 cameraPos = game.camera.getPosition();
+			Vector2 cameraPos = game.camera.position;
 			for(int i = (int) cameraPos.X / 16; i < ((int) (cameraPos.X + game.GraphicsDevice.PresentationParameters.BackBufferWidth) / 16) + 1; i++) for(int j = (int) cameraPos.Y / 16; j < (int) (cameraPos.Y + game.GraphicsDevice.PresentationParameters.BackBufferHeight) / 16 + 1; j++)
 					if(i < maps[game.player.world].data.GetLength(0) && j < maps[game.player.world].data.GetLength(1) && i >= 0 && j >= 0 && Terrain.terrainList[maps[game.player.world].data[i, j]] != null)
 						Terrain.terrainList[maps[game.player.world].data[i, j]].update(gt, new Vector2(i, j));
