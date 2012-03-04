@@ -23,10 +23,10 @@ namespace Essence {
 
 		public IntBools getSides(Vector2 pos) {
 			IntBools sides = new IntBools(0);
-			if(pos.Y == 0 || isSide(game.world.maps[game.player.world].data[(int) pos.X, (int) pos.Y - 1])) sides[0] = true;
-			if(pos.X == game.world.maps[game.player.world].data.GetUpperBound(0) || isSide(game.world.maps[game.player.world].data[(int) pos.X + 1, (int) pos.Y])) sides[1] = true;
-			if(pos.Y == game.world.maps[game.player.world].data.GetUpperBound(1) || isSide(game.world.maps[game.player.world].data[(int) pos.X, (int) pos.Y + 1])) sides[2] = true;
-			if(pos.X == 0 || isSide(game.world.maps[game.player.world].data[(int) pos.X - 1, (int) pos.Y])) sides[3] = true;
+			sides[0] = (pos.Y == 0 || isSide(game.world.maps[game.player.world].data[(int) pos.X, (int) pos.Y - 1]));
+			sides[1] = (pos.X == game.world.maps[game.player.world].data.GetUpperBound(0) || isSide(game.world.maps[game.player.world].data[(int) pos.X + 1, (int) pos.Y]));
+			sides[2] = (pos.Y == game.world.maps[game.player.world].data.GetUpperBound(1) || isSide(game.world.maps[game.player.world].data[(int) pos.X, (int) pos.Y + 1]));
+			sides[3] = (pos.X == 0 || isSide(game.world.maps[game.player.world].data[(int) pos.X - 1, (int) pos.Y]));
 			return sides;
 		}
 
