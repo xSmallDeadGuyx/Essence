@@ -15,31 +15,31 @@ namespace Essence {
 			Terrain.game = game = essence;
 		}
 
-		public void loadWorld() {
+		public void LoadWorld() {
 			grassTex = game.Content.Load<Texture2D>("grass");
-			foreach(Terrain t in Terrain.terrainList) if(t != null) t.load();
+			foreach(Terrain t in Terrain.terrainList) if(t != null) t.Load();
 			maps.Add(new Map("map", game));
 		}
 
-		public void draw(GameTime gt) {
-			game.camera.draw(grassTex, Vector2.Zero, new Rectangle(0, 0, maps[game.player.world].data.GetLength(0) * 16, maps[game.player.world].data.GetLength(1) * 16), Color.White);
+		public void Draw(GameTime gt) {
+			game.camera.Draw(grassTex, Vector2.Zero, new Rectangle(0, 0, maps[game.player.world].data.GetLength(0) * 16, maps[game.player.world].data.GetLength(1) * 16), Color.White);
 
-			Vector2 cameraPos = game.camera.position;
+			Vector2 cameraPos = game.camera.Position;
 			for(int i = (int) cameraPos.X / 16; i < ((int) (cameraPos.X + game.GraphicsDevice.PresentationParameters.BackBufferWidth) / 16) + 1; i++) for(int j = (int) cameraPos.Y / 16; j < (int) (cameraPos.Y + game.GraphicsDevice.PresentationParameters.BackBufferHeight) / 16 + 1; j++)
 					if(i < maps[game.player.world].data.GetLength(0) && j < maps[game.player.world].data.GetLength(1) && i >= 0 && j >= 0 && Terrain.terrainList[maps[game.player.world].data[i, j]] != null)
-					Terrain.terrainList[maps[game.player.world].data[i, j]].draw(gt, new Vector2(i, j));
+					Terrain.terrainList[maps[game.player.world].data[i, j]].Draw(gt, new Vector2(i, j));
 		}
 
-		public void update(GameTime gt) {
-			game.controls.update(gt);
+		public void Update(GameTime gt) {
+			game.controls.Update(gt);
 
-			Vector2 cameraPos = game.camera.position;
+			Vector2 cameraPos = game.camera.Position;
 			for(int i = (int) cameraPos.X / 16; i < ((int) (cameraPos.X + game.GraphicsDevice.PresentationParameters.BackBufferWidth) / 16) + 1; i++) for(int j = (int) cameraPos.Y / 16; j < (int) (cameraPos.Y + game.GraphicsDevice.PresentationParameters.BackBufferHeight) / 16 + 1; j++)
 					if(i < maps[game.player.world].data.GetLength(0) && j < maps[game.player.world].data.GetLength(1) && i >= 0 && j >= 0 && Terrain.terrainList[maps[game.player.world].data[i, j]] != null)
-						Terrain.terrainList[maps[game.player.world].data[i, j]].update(gt, new Vector2(i, j));
+						Terrain.terrainList[maps[game.player.world].data[i, j]].Update(gt, new Vector2(i, j));
 		}
 
-		public bool isTerrainSolid(Vector2 pos) {
+		public bool IsTerrainSolid(Vector2 pos) {
 			return pos.X / 16 < maps[game.player.world].data.GetLength(0) && pos.Y / 16 < maps[game.player.world].data.GetLength(1) && pos.X / 16 >= 0 && pos.Y / 16 >= 0 && Terrain.terrainList[maps[game.player.world].data[(int) (pos.X / 16), (int) (pos.Y / 16)]] != null && Terrain.terrainList[maps[game.player.world].data[(int) (pos.X / 16), (int) (pos.Y / 16)]].isSolid;
 		}
 	}

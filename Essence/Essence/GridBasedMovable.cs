@@ -13,10 +13,20 @@ namespace Essence {
 
 		public Dir dir = Dir.Down;
 
-		public Vector2 position;
+		private Vector2 position;
+		public Vector2 Position {
+			get { return position; }
+			set { position = value; }
+		}
+
 		public bool moving = false;
 		public int speed = 1;
+
 		private Vector2 targetSpace;
+		public Vector2 TargetSpace {
+			get { return targetSpace; }
+			set { if(value.X % 16 == 0 && value.Y % 16 == 0) targetSpace = value; }
+		}
 
 		public Dir nextDir;
 
@@ -26,29 +36,29 @@ namespace Essence {
 			targetSpace = position;
 		}
 
-		public void setPositionAndSnap(Vector2 pos) {
+		public void SetPositionAndSnap(Vector2 pos) {
 			if(pos.X % 16 != 0) pos.X = (float) Math.Round(pos.X / 16) * 16;
 			if(pos.Y % 16 != 0) pos.Y = (float) Math.Round(pos.Y / 16) * 16;
 			position = targetSpace = pos;
 		}
 
-		public void recalcTarget() {
+		public void RecalcTarget() {
 			targetSpace = new Vector2(dir == Dir.Left ? position.X - speed - (position.X - speed < 0 ? 16 + ((position.X - speed) % 16) : (position.X - speed) % 16) : (dir == Dir.Right ? position.X + speed + 16 - (position.X + speed < 0 ? 16 + ((position.X + speed) % 16) : (position.X + speed) % 16) : position.X), dir == Dir.Up ? position.Y - speed - (position.Y - speed < 0 ? 16 + ((position.Y - speed) % 16) : (position.Y - speed) % 16) : (dir == Dir.Down ? position.Y + speed + 16 - (position.Y + speed < 0 ? 16 + ((position.Y + speed) % 16) : (position.Y + speed) % 16) : position.Y));
 		}
 
-		public bool atOrPastTargetSpace() {
+		public bool AtOrPastTargetSpace() {
 			return (dir == Dir.Left && position.X <= targetSpace.X) ||
 					(dir == Dir.Right && position.X >= targetSpace.X) ||
 					(dir == Dir.Up && position.Y <= targetSpace.Y) ||
 					(dir == Dir.Down && position.Y >= targetSpace.Y);
 		}
 
-		public void updateMovement() {
-			if((position.Equals(targetSpace) || atOrPastTargetSpace()) && (nextDir != dir || moving)) {
+		public void UpdateMovement() {
+			if((position.Equals(targetSpace) || AtOrPastTargetSpace()) && (nextDir != dir || moving)) {
 				dir = nextDir;
-				recalcTarget();
+				RecalcTarget();
 
-				if(game.world.isTerrainSolid(targetSpace)) {
+				if(game.world.IsTerrainSolid(targetSpace)) {
 					moving = false;
 					targetSpace = position;
 				}

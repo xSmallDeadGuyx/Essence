@@ -26,25 +26,25 @@ namespace Essence {
 			dir = 0;
 		}
 
-		public void changeWorld(int id) {
+		public void ChangeWorld(int id) {
 			Map nextMap = game.world.maps[id];
 			if(nextMap != null && id != world) {
-				position = nextMap.getPlayerStartPos(world);
+				Position = nextMap.GetPlayerStartPos(world);
 				world = id;
 			}
 		}
 
-		public void loadContent() {
+		public void LoadContent() {
 			sprite = game.Content.Load<Texture2D>("player");
 			frames = new Rectangle[sprite.Width / 16, sprite.Height / 16];
 
 			for(int j = 0; j <= frames.GetUpperBound(1); j++) for(int i = 0; i <= frames.GetUpperBound(0); i++)
 				frames[i, j] = new Rectangle(i * 16, j * 16, 16, 16);
 
-			setPositionAndSnap(game.world.maps[world].getPlayerStartPos(world));
+			SetPositionAndSnap(game.world.maps[world].GetPlayerStartPos(world));
 		}
 
-		public void update(GameTime gt) {
+		public void Update(GameTime gt) {
 			speed = game.controls.sprintPressed ? runSpeed : walkSpeed;
 			moving = game.controls.leftPressed || game.controls.rightPressed || game.controls.upPressed || game.controls.downPressed;
 			
@@ -54,12 +54,12 @@ namespace Essence {
 			if(game.controls.upPressed) nextDir = Dir.Up;
 			if(game.controls.downPressed) nextDir = Dir.Down;
 
-			updateMovement();
+			UpdateMovement();
 
-			game.camera.position = position - new Vector2(8, 8);
+			game.camera.Position = Position - new Vector2(8, 8);
 		}
 
-		public void draw(GameTime gt) {
+		public void Draw(GameTime gt) {
 			if(moving) {
 				lastFrameChange++;
 				if(lastFrameChange >= 8 - ((speed - walkSpeed) * 1.5)) {
@@ -71,7 +71,7 @@ namespace Essence {
 			}
 			else frame = 1;
 
-			game.camera.draw(sprite, position, frames[frame, (int) dir], Color.White);
+			game.camera.Draw(sprite, Position, frames[frame, (int) dir], Color.White);
 		}
 	}
 }

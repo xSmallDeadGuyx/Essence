@@ -36,8 +36,8 @@ namespace Essence {
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 			camera = new Camera(spriteBatch, this);
 
-			world.loadWorld();
-			player.loadContent();
+			world.LoadWorld();
+			player.LoadContent();
 		}
 
 		protected override void UnloadContent() {
@@ -48,8 +48,8 @@ namespace Essence {
 			if(GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
 				this.Exit();
 
-			world.update(gameTime);
-			player.update(gameTime);
+			world.Update(gameTime);
+			player.Update(gameTime);
 
 			base.Update(gameTime);
 		}
@@ -59,8 +59,8 @@ namespace Essence {
 			
 			spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.LinearWrap, null, null);
 
-			world.draw(gameTime);
-			player.draw(gameTime);
+			world.Draw(gameTime);
+			player.Draw(gameTime);
 
 			spriteBatch.End();
 

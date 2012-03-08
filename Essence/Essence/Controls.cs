@@ -26,7 +26,7 @@ namespace Essence {
 		public Keys downKey = Keys.S;
 		public Keys sprintKey = Keys.LeftShift;
 
-		public void update(GameTime gt) {
+		public void Update(GameTime gt) {
 			leftPressedPrev = leftPressed;
 			rightPressedPrev = rightPressed;
 			upPressedPrev = upPressed;

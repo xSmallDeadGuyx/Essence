@@ -18,7 +18,7 @@ namespace Essence {
 
 		public Map(String s, Essence essence) : this(s, false, essence) {}
 
-		public Vector2 getPlayerStartPos(int lastWorld) {
+		public Vector2 GetPlayerStartPos(int lastWorld) {
 			return new Vector2((data.GetLength(0) / 2) * 16, (data.GetLength(1) / 2) * 16);
 		}
 

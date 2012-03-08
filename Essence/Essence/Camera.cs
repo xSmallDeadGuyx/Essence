@@ -9,12 +9,12 @@ namespace Essence {
 
 		private Vector2 cameraPosition;
 
-		public Vector2 position {
+		public Vector2 Position {
 			get {
 				return cameraPosition;
 			}
 			set {
-				setPosition(value);
+				SetPosition(value);
 			}
 		}
 
@@ -24,7 +24,7 @@ namespace Essence {
 			cameraPosition = new Vector2(0, 0);
 		}
 
-		private void setPosition(Vector2 vec) {
+		private void SetPosition(Vector2 vec) {
 			cameraPosition = vec - new Vector2(spriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth/2, spriteBatch.GraphicsDevice.PresentationParameters.BackBufferHeight/2); // set the position of the camera
 			if(!game.world.maps[game.player.world].cameraOverflow) { // if camera is not able to overflow on current world map
 				if(cameraPosition.X < 0) cameraPosition.X = 0; // if camera is too far left, move to the minimum
@@ -34,22 +34,22 @@ namespace Essence {
 			}
 		}
 
-		public bool isOnScreen(Texture2D tex, Vector2 pos) {
+		public bool IsOnScreen(Texture2D tex, Vector2 pos) {
 			Vector2 finalPos = pos - cameraPosition; // work out relative position on screen
 			return finalPos.X + tex.Width >= 0 && finalPos.Y + tex.Height >= 0 && finalPos.X <= spriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth && finalPos.Y <= spriteBatch.GraphicsDevice.PresentationParameters.BackBufferHeight; // return if any corners of the texture will be on the screen
 		}
 
-		public bool isOnScreen(Rectangle rect, Vector2 pos) {
+		public bool IsOnScreen(Rectangle rect, Vector2 pos) {
 			Vector2 finalPos = pos - cameraPosition; // work out relative position on screen
 			return finalPos.X + rect.Width >= 0 && finalPos.Y + rect.Height >= 0 && finalPos.X <= spriteBatch.GraphicsDevice.PresentationParameters.BackBufferWidth && finalPos.Y <= spriteBatch.GraphicsDevice.PresentationParameters.BackBufferHeight; // return if any corners of the rectangle will be on the screen
 		}
 
-		public void draw(Texture2D tex, Vector2 position, Color col) {
-			if(isOnScreen(tex, position)) spriteBatch.Draw(tex, position - cameraPosition, col); // if texture will be on the screen, draw
+		public void Draw(Texture2D tex, Vector2 position, Color col) {
+			if(IsOnScreen(tex, position)) spriteBatch.Draw(tex, position - cameraPosition, col); // if texture will be on the screen, draw
 		}
 
-		public void draw(Texture2D tex, Vector2 position, Rectangle rect, Color col) {
-			if(isOnScreen(rect, position)) spriteBatch.Draw(tex, position - cameraPosition, rect, col); // if rectangle will be on screen, draw
+		public void Draw(Texture2D tex, Vector2 position, Rectangle rect, Color col) {
+			if(IsOnScreen(rect, position)) spriteBatch.Draw(tex, position - cameraPosition, rect, col); // if rectangle will be on screen, draw
 		}
 	}
 }
