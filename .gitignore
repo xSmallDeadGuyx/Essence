@@ -1,6 +1,4 @@
-
-<!-- saved from url=(0058)https://raw.github.com/rabbidrabbit/Game/master/.gitignore -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">#OS junk files
+#OS junk files
 [Tt]humbs.db
 *.DS_Store
 
@@ -28,9 +26,9 @@
 *.unsuccessfulbuild
 ipch/
 obj/
-[Bb]in
-[Dd]ebug*/
-[Rr]elease*/
+#[Bb]in
+#[Dd]ebug*/
+#[Rr]elease*/
 Ankh.NoLoad
 
 #Tooling
@@ -49,5 +47,3 @@ _ReSharper*/
 
 #NuGet
 packages/
-
-</pre></body></html>
