@@ -17,7 +17,13 @@ namespace Essence {
 		}
 
 		public Map(String s, Essence essence) : this(s, false, essence) {}
-
+		public byte this[Vector2 pos] {
+			get { return data[pos.X, pos.Y]; }
+			set { data[pos.X, pos.Y] = value; }
+		}
+		public Vector2 Size {
+			get { return new Vector2(0, 0); /*todo*/ }
+		}
 		public Vector2 getPlayerStartPos(int lastWorld) {
 			return new Vector2((data.GetLength(0) / 2) * 16, (data.GetLength(1) / 2) * 16);
 		}
