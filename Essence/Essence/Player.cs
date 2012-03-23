@@ -23,7 +23,7 @@ namespace Essence {
 			game = essence;
 			frameInc = true;
 			frame = 1;
-			dir = 0;
+			dir = Dir.Down;
 		}
 
 		public void ChangeWorld(int id) {
@@ -71,7 +71,7 @@ namespace Essence {
 			}
 			else frame = 1;
 
-			game.camera.Draw(sprite, Position, frames[frame, (int) dir], Color.White);
+			game.camera.Draw(sprite, Position, frames[frame, Dir.ToFrame(dir)], Color.White);
 		}
 	}
 }

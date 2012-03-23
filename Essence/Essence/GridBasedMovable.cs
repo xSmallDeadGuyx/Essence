@@ -7,11 +7,9 @@ using Microsoft.Xna.Framework;
 namespace Essence {
 	public class GridBasedMovable {
 
-		public enum Dir : byte {Down, Up, Left, Right};
-
 		private Essence game;
 
-		public Dir dir = Dir.Down;
+		public Vector2 dir = Dir.Down;
 
 		private Vector2 position;
 		public Vector2 Position {
@@ -28,7 +26,7 @@ namespace Essence {
 			set { if(value.X % 16 == 0 && value.Y % 16 == 0) targetSpace = value; }
 		}
 
-		public Dir nextDir;
+		public Vector2 nextDir;
 
 		public GridBasedMovable(Essence essence) {
 			game = essence;
@@ -43,18 +41,20 @@ namespace Essence {
 		}
 
 		public void RecalcTarget() {
-			targetSpace = new Vector2(dir == Dir.Left ? position.X - speed - (position.X - speed < 0 ? 16 + ((position.X - speed) % 16) : (position.X - speed) % 16) : (dir == Dir.Right ? position.X + speed + 16 - (position.X + speed < 0 ? 16 + ((position.X + speed) % 16) : (position.X + speed) % 16) : position.X), dir == Dir.Up ? position.Y - speed - (position.Y - speed < 0 ? 16 + ((position.Y - speed) % 16) : (position.Y - speed) % 16) : (dir == Dir.Down ? position.Y + speed + 16 - (position.Y + speed < 0 ? 16 + ((position.Y + speed) % 16) : (position.Y + speed) % 16) : position.Y));
+			Vector2 newPos = (position + (dir * speed)) / 16 + dir;
+			targetSpace = new Vector2((float) Math.Round(newPos.X) * 16, (float) Math.Round(newPos.Y) * 16);
+			//targetSpace = new Vector2(dir == Dir.Left ? position.X - speed - (position.X - speed < 0 ? 16 + ((position.X - speed) % 16) : (position.X - speed) % 16) : (dir == Dir.Right ? position.X + speed + 16 - (position.X + speed < 0 ? 16 + ((position.X + speed) % 16) : (position.X + speed) % 16) : position.X), dir == Dir.Up ? position.Y - speed - (position.Y - speed < 0 ? 16 + ((position.Y - speed) % 16) : (position.Y - speed) % 16) : (dir == Dir.Down ? position.Y + speed + 16 - (position.Y + speed < 0 ? 16 + ((position.Y + speed) % 16) : (position.Y + speed) % 16) : position.Y));
 		}
 
-		public bool AtOrPastTargetSpace() {
-			return (dir == Dir.Left && position.X <= targetSpace.X) ||
-					(dir == Dir.Right && position.X >= targetSpace.X) ||
-					(dir == Dir.Up && position.Y <= targetSpace.Y) ||
-					(dir == Dir.Down && position.Y >= targetSpace.Y);
+		public bool AtOrPastTargetSpace(Vector2 pos) {
+			return (dir == Dir.Left && pos.X <= targetSpace.X) ||
+					(dir == Dir.Right && pos.X >= targetSpace.X) ||
+					(dir == Dir.Up && pos.Y <= targetSpace.Y) ||
+					(dir == Dir.Down && pos.Y >= targetSpace.Y);
 		}
 
 		public void UpdateMovement() {
-			if((position.Equals(targetSpace) || AtOrPastTargetSpace()) && (nextDir != dir || moving)) {
+			if((position.Equals(targetSpace) || AtOrPastTargetSpace(position)) && (nextDir != dir || moving)) {
 				dir = nextDir;
 				RecalcTarget();
 
@@ -66,7 +66,13 @@ namespace Essence {
 			if(!position.Equals(targetSpace)) moving = true;
 
 			if(moving) {
-				if(position.X > targetSpace.X && dir == Dir.Left) {
+				Vector2 movement = speed * dir;
+				Vector2 newPosition = position + movement;
+
+				if(AtOrPastTargetSpace(newPosition)) position = targetSpace;
+				else position = newPosition;
+				
+				/*if(position.X > targetSpace.X && dir == Dir.Left) {
 					if(nextDir == Dir.Left) position.X -= speed;
 					else position.X = Math.Abs(position.X - targetSpace.X) <= speed ? targetSpace.X : position.X - speed;
 				}
@@ -81,7 +87,7 @@ namespace Essence {
 				if(position.Y < targetSpace.Y && dir == Dir.Down) {
 					if(nextDir == Dir.Down) position.Y += speed;
 					else position.Y = Math.Abs(position.Y - targetSpace.Y) <= speed ? targetSpace.Y : position.Y + speed;
-				}
+				}*/
 			}
 		}
 	}
