@@ -23,7 +23,7 @@ namespace Essence {
 			game = essence;
 			frameInc = true;
 			frame = 1;
-			dir = Dir.Down;
+			Dir = Direction.Down;
 		}
 
 		public void ChangeWorld(int id) {
@@ -48,11 +48,11 @@ namespace Essence {
 			speed = game.controls.sprintPressed ? runSpeed : walkSpeed;
 			moving = game.controls.leftPressed || game.controls.rightPressed || game.controls.upPressed || game.controls.downPressed;
 			
-			nextDir = dir;
-			if(game.controls.leftPressed) nextDir = Dir.Left;
-			if(game.controls.rightPressed) nextDir = Dir.Right;
-			if(game.controls.upPressed) nextDir = Dir.Up;
-			if(game.controls.downPressed) nextDir = Dir.Down;
+			NextDir = Dir;
+			if(game.controls.leftPressed) NextDir = Direction.Left;
+			if(game.controls.rightPressed) NextDir = Direction.Right;
+			if(game.controls.upPressed) NextDir = Direction.Up;
+			if(game.controls.downPressed) NextDir = Direction.Down;
 
 			UpdateMovement();
 
@@ -71,7 +71,7 @@ namespace Essence {
 			}
 			else frame = 1;
 
-			game.camera.Draw(sprite, Position, frames[frame, Dir.ToFrame(dir)], Color.White);
+			game.camera.Draw(sprite, Position, frames[frame, Direction.ToFrame(Dir)], Color.White);
 		}
 	}
 }
