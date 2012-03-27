@@ -8,8 +8,8 @@ using Microsoft.Xna.Framework;
 namespace Essence {
 
 	public class Map {
-		public byte[,] data;
-		public bool cameraOverflow = false;
+		public byte[,] Data;
+		public bool CameraOverflow = false;
 		private Essence game;
 
 		public Map(Essence essence) {
@@ -19,18 +19,18 @@ namespace Essence {
 		public Map(String s, Essence essence) : this(s, false, essence) {}
 
 		public Vector2 GetPlayerStartPos(int lastWorld) {
-			return new Vector2((data.GetLength(0) / 2) * 16, (data.GetLength(1) / 2) * 16);
+			return new Vector2((Data.GetLength(0) / 2) * 16, (Data.GetLength(1) / 2) * 16);
 		}
 
 		public Map(String s, bool canCameraOverflow, Essence essence) {
 			game = essence;
-			cameraOverflow = canCameraOverflow;
+			CameraOverflow = canCameraOverflow;
 
 			Texture2D map = game.Content.Load<Texture2D>(s);
 			Color[] colours = new Color[map.Width * map.Height];
 
 			map.GetData(colours);
-			data = new byte[map.Width, map.Height];
+			Data = new byte[map.Width, map.Height];
 
 			for(int i = 0; i < map.Width; i++) for(int j = 0; j < map.Height; j++) {
 					byte id = 0;
@@ -40,10 +40,10 @@ namespace Essence {
 							break;
 						}
 					
-					data[i, j] = id;
+					Data[i, j] = id;
 				}
 
-			game.world.maps.Add(this);
+			game.TheWorld.maps.Add(this);
 		}
 	}
 }

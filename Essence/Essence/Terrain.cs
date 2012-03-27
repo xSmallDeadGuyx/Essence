@@ -35,7 +35,7 @@ namespace Essence {
 		public virtual void Update(GameTime gt, Vector2 pos) {}
 
 		public virtual void Draw(GameTime gt, Vector2 pos) {
-			game.camera.Draw(texture, new Vector2(pos.X * 16, pos.Y * 16), Color.White);
+			game.TheCamera.Draw(texture, new Vector2(pos.X * 16, pos.Y * 16), Color.White);
 		}
 
 		public Terrain SetTexture(string s) {

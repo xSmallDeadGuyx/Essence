@@ -6,40 +6,40 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace Essence {
-	public class Controls {
+	public class Controller {
 
-		public bool leftPressed = false;
-		public bool rightPressed = false;
-		public bool upPressed = false;
-		public bool downPressed = false;
-		public bool sprintPressed = false;
+		public bool LeftPressed = false;
+		public bool RightPressed = false;
+		public bool UpPressed = false;
+		public bool DownPressed = false;
+		public bool SprintPressed = false;
 
-		public bool leftPressedPrev = false;
-		public bool rightPressedPrev = false;
-		public bool upPressedPrev = false;
-		public bool downPressedPrev = false;
-		public bool sprintPressedPrev = false;
+		public bool LeftPressedPrev = false;
+		public bool RightPressedPrev = false;
+		public bool UpPressedPrev = false;
+		public bool DownPressedPrev = false;
+		public bool SprintPressedPrev = false;
 
-		public Keys leftKey = Keys.A;
-		public Keys rightKey = Keys.D;
-		public Keys upKey = Keys.W;
-		public Keys downKey = Keys.S;
-		public Keys sprintKey = Keys.LeftShift;
+		public Keys LeftKey = Keys.A;
+		public Keys RightKey = Keys.D;
+		public Keys UpKey = Keys.W;
+		public Keys DownKey = Keys.S;
+		public Keys SprintKey = Keys.LeftShift;
 
 		public void Update(GameTime gt) {
-			leftPressedPrev = leftPressed;
-			rightPressedPrev = rightPressed;
-			upPressedPrev = upPressed;
-			downPressedPrev = downPressed;
-			sprintPressedPrev = sprintPressed;
+			LeftPressedPrev = LeftPressed;
+			RightPressedPrev = RightPressed;
+			UpPressedPrev = UpPressed;
+			DownPressedPrev = DownPressed;
+			SprintPressedPrev = SprintPressed;
 
 			KeyboardState kb = Keyboard.GetState();
 
-			leftPressed = kb.IsKeyDown(leftKey);
-			rightPressed = kb.IsKeyDown(rightKey);
-			upPressed = kb.IsKeyDown(upKey);
-			downPressed = kb.IsKeyDown(downKey);
-			sprintPressed = kb.IsKeyDown(sprintKey);
+			LeftPressed = kb.IsKeyDown(LeftKey);
+			RightPressed = kb.IsKeyDown(RightKey);
+			UpPressed = kb.IsKeyDown(UpKey);
+			DownPressed = kb.IsKeyDown(DownKey);
+			SprintPressed = kb.IsKeyDown(SprintKey);
 		}
 	}
 }

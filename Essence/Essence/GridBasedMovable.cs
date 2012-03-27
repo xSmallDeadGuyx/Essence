@@ -58,7 +58,7 @@ namespace Essence {
 				Dir = NextDir;
 				RecalcTarget();
 
-				if(game.world.IsTerrainSolid(targetSpace)) {
+				if(game.TheWorld.IsTerrainSolid(targetSpace)) {
 					moving = false;
 					targetSpace = position;
 				}

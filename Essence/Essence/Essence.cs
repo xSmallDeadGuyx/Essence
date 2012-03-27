@@ -9,10 +9,10 @@ namespace Essence {
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 
-		public Player player;
-		public Camera camera;
-		public World world;
-		public Controls controls = new Controls();
+		public Player ThePlayer;
+		public Camera TheCamera;
+		public World TheWorld;
+		public Controller Controls = new Controller();
 
 		public Essence() {
 			graphics = new GraphicsDeviceManager(this);
@@ -26,18 +26,18 @@ namespace Essence {
 		}
 
 		protected override void Initialize() {
-			player = new Player(this);
-			world = new World(this);
+			ThePlayer = new Player(this);
+			TheWorld = new World(this);
 
 			base.Initialize();
 		}
 
 		protected override void LoadContent() {
 			spriteBatch = new SpriteBatch(GraphicsDevice);
-			camera = new Camera(spriteBatch, this);
+			TheCamera = new Camera(spriteBatch, this);
 
-			world.LoadWorld();
-			player.LoadContent();
+			TheWorld.LoadWorld();
+			ThePlayer.LoadContent();
 		}
 
 		protected override void UnloadContent() {
@@ -48,8 +48,8 @@ namespace Essence {
 			if(GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
 				this.Exit();
 
-			world.Update(gameTime);
-			player.Update(gameTime);
+			TheWorld.Update(gameTime);
+			ThePlayer.Update(gameTime);
 
 			base.Update(gameTime);
 		}
@@ -59,8 +59,8 @@ namespace Essence {
 			
 			spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.LinearWrap, null, null);
 
-			world.Draw(gameTime);
-			player.Draw(gameTime);
+			TheWorld.Draw(gameTime);
+			ThePlayer.Draw(gameTime);
 
 			spriteBatch.End();
 

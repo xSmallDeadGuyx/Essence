@@ -27,7 +27,7 @@ namespace Essence {
 		}
 
 		public void ChangeWorld(int id) {
-			Map nextMap = game.world.maps[id];
+			Map nextMap = game.TheWorld.maps[id];
 			if(nextMap != null && id != world) {
 				Position = nextMap.GetPlayerStartPos(world);
 				world = id;
@@ -41,22 +41,22 @@ namespace Essence {
 			for(int j = 0; j <= frames.GetUpperBound(1); j++) for(int i = 0; i <= frames.GetUpperBound(0); i++)
 				frames[i, j] = new Rectangle(i * 16, j * 16, 16, 16);
 
-			SetPositionAndSnap(game.world.maps[world].GetPlayerStartPos(world));
+			SetPositionAndSnap(game.TheWorld.maps[world].GetPlayerStartPos(world));
 		}
 
 		public void Update(GameTime gt) {
-			speed = game.controls.sprintPressed ? runSpeed : walkSpeed;
-			moving = game.controls.leftPressed || game.controls.rightPressed || game.controls.upPressed || game.controls.downPressed;
+			speed = game.Controls.SprintPressed ? runSpeed : walkSpeed;
+			moving = game.Controls.LeftPressed || game.Controls.RightPressed || game.Controls.UpPressed || game.Controls.DownPressed;
 			
 			NextDir = Dir;
-			if(game.controls.leftPressed) NextDir = Direction.Left;
-			if(game.controls.rightPressed) NextDir = Direction.Right;
-			if(game.controls.upPressed) NextDir = Direction.Up;
-			if(game.controls.downPressed) NextDir = Direction.Down;
+			if(game.Controls.LeftPressed) NextDir = Direction.Left;
+			if(game.Controls.RightPressed) NextDir = Direction.Right;
+			if(game.Controls.UpPressed) NextDir = Direction.Up;
+			if(game.Controls.DownPressed) NextDir = Direction.Down;
 
 			UpdateMovement();
 
-			game.camera.Position = Position - new Vector2(8, 8);
+			game.TheCamera.Position = Position - new Vector2(8, 8);
 		}
 
 		public void Draw(GameTime gt) {
@@ -71,7 +71,7 @@ namespace Essence {
 			}
 			else frame = 1;
 
-			game.camera.Draw(sprite, Position, frames[frame, Direction.ToFrame(Dir)], Color.White);
+			game.TheCamera.Draw(sprite, Position, frames[frame, Direction.ToFrame(Dir)], Color.White);
 		}
 	}
 }
