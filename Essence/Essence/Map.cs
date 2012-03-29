@@ -15,6 +15,7 @@ namespace Essence {
 
 		public Map(Essence essence) {
 			game = essence;
+			game.TheWorld.maps.Add(this);
 		}
 
 		public Map(String s, Essence essence) : this(s, false, essence) {}
@@ -50,8 +51,8 @@ namespace Essence {
 		}
 
 		public void SaveMap(String fileName) {
-			int w = Data.GetUpperBound(0);
-			int h = Data.GetUpperBound(1);
+			int w = Data.GetLength(0);
+			int h = Data.GetLength(1);
 			byte[] binaryData = new byte[w * h + 4];
 			binaryData[0] = (byte) (w / 256);
 			binaryData[1] = (byte) (w % 256);
