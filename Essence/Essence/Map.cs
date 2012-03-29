@@ -51,34 +51,28 @@ namespace Essence {
 		}
 
 		public void SaveMap(String fileName) {
-			int w = Data.GetLength(0);
-			int h = Data.GetLength(1);
-			byte[] binaryData = new byte[w * h + 4];
-			binaryData[0] = (byte) (w / 256);
-			binaryData[1] = (byte) (w % 256);
-			binaryData[2] = (byte) (h / 256);
-			binaryData[3] = (byte) (h % 256);
-
-			for(int i = 0; i < w; i++) for(int j = 0; j < h; j++)
-				binaryData[i + j * w + 4] = Data[i, j];
-
-			FileStream fs = File.Create(fileName, binaryData.Length, FileOptions.None);
+			Int16 w = (Int16) Data.GetLength(0);
+			Int16 h = (Int16) Data.GetLength(1);
+			int size = w * h + 2 * sizeof(Int16);
+			FileStream fs = File.Create(fileName, size, FileOptions.None);
 			BinaryWriter bw = new BinaryWriter(fs);
-			bw.Write(binaryData);
+			bw.Write(w); bw.Write(h);
+
+			for(int j = 0; j < h; j++) for(int i = 0; i < w; i++)
+				bw.Write(Data[i, j]);
+
 			bw.Close();
 			fs.Close();
 		}
 
 		public void LoadMap(String fileName) {
-			BinaryReader b = new BinaryReader(File.Open(fileName, FileMode.Open));
-			int length = (int) b.BaseStream.Length;
-			byte[] binaryData = b.ReadBytes(length); ;
-			int w = binaryData[0] * 256 + binaryData[1];
-			int h = binaryData[2] * 256 + binaryData[3];
+			BinaryReader br = new BinaryReader(File.Open(fileName, FileMode.Open));
+			Int16 w = br.ReadInt16();
+			Int16 h = br.ReadInt16();
 			Data = new byte[w, h];
 
-			for(int i = 0; i < w; i++) for(int j = 0; j < h; j++)
-				Data[i, j] = binaryData[i + j * w + 4];
+			for(int j = 0; j < h; j++) for(int i = 0; i < w; i++)
+				Data[i, j] = br.ReadByte();
 		}
 	}
 }

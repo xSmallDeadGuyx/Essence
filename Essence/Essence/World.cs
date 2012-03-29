@@ -18,7 +18,7 @@ namespace Essence {
 		public void LoadWorld() {
 			grassTex = game.Content.Load<Texture2D>("grass");
 			foreach(Terrain t in Terrain.terrainList) if(t != null) t.Load();
-			new Map("map1.bin", game);
+			Map map = new Map("map.bin", game);
 		}
 
 		public void Draw(GameTime gt) {
