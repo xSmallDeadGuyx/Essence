@@ -72,7 +72,7 @@ namespace Essence {
 		public void LoadMap(String fileName) {
 			BinaryReader b = new BinaryReader(File.Open(fileName, FileMode.Open));
 			int length = (int) b.BaseStream.Length;
-			byte[] binaryData = b.ReadBytes(length); ;
+			byte[] binaryData = b.ReadBytes(length);
 			int w = binaryData[0] * 256 + binaryData[1];
 			int h = binaryData[2] * 256 + binaryData[3];
 			Data = new byte[w, h];
