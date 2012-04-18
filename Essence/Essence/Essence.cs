@@ -9,6 +9,8 @@ namespace Essence {
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 
+		public Random rand = new Random();
+
 		public Player ThePlayer;
 		public Camera TheCamera;
 		public World TheWorld;

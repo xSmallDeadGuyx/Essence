@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework.Input;
 namespace Essence {
 	public class Player : GridBasedMovable {
 		
-		private Essence game;
 		private Texture2D sprite;
 
 		public int world = 0;
@@ -20,7 +19,6 @@ namespace Essence {
 		private int lastFrameChange = 0;
 
 		public Player(Essence essence) : base(essence) {
-			game = essence;
 			frameInc = true;
 			frame = 1;
 			Dir = Direction.Down;
@@ -34,7 +32,7 @@ namespace Essence {
 			}
 		}
 
-		public void LoadContent() {
+		public override void LoadContent() {
 			sprite = game.Content.Load<Texture2D>("player");
 			frames = new Rectangle[sprite.Width / 16, sprite.Height / 16];
 
@@ -44,7 +42,7 @@ namespace Essence {
 			SetPositionAndSnap(game.TheWorld.maps[world].GetPlayerStartPos(world));
 		}
 
-		public void Update(GameTime gt) {
+		public override void Update(GameTime gt) {
 			speed = game.Controls.SprintPressed ? runSpeed : walkSpeed;
 			moving = game.Controls.LeftPressed || game.Controls.RightPressed || game.Controls.UpPressed || game.Controls.DownPressed;
 			
@@ -59,7 +57,7 @@ namespace Essence {
 			game.TheCamera.Position = Position - new Vector2(8, 8);
 		}
 
-		public void Draw(GameTime gt) {
+		public override void Draw(GameTime gt) {
 			if(moving) {
 				lastFrameChange++;
 				if(lastFrameChange >= 8 - ((speed - walkSpeed) * 1.5)) {

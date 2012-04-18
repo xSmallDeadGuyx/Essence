@@ -12,10 +12,20 @@ namespace Essence {
 		public byte[,] Data;
 		public bool CameraOverflow = false;
 		private Essence game;
+		public List<GridBasedMovable> movables = new List<GridBasedMovable>();
 
 		public Map(Essence essence) {
 			game = essence;
 			game.TheWorld.maps.Add(this);
+		}
+
+		public void UpdateMovables(GameTime gt) {
+			Console.WriteLine(movables.Count);
+			foreach(GridBasedMovable m in movables) m.Update(gt);
+		}
+
+		public void DrawMovables(GameTime gt) {
+			foreach(GridBasedMovable m in movables) m.Draw(gt);
 		}
 
 		public Map(String s, Essence essence) : this(s, false, essence) {}

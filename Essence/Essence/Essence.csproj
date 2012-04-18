@@ -115,6 +115,7 @@
     <Compile Include="GridBasedMovable.cs" />
     <Compile Include="IntBools.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="NPCWanderer.cs" />
     <Compile Include="TerrainSided.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Essence.cs" />

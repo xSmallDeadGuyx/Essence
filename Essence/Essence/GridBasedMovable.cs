@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 namespace Essence {
 	public class GridBasedMovable {
 
-		private Essence game;
+		protected Essence game;
 
 		public Vector2 Dir = Direction.Down;
 
@@ -19,6 +19,12 @@ namespace Essence {
 
 		public bool moving = false;
 		public int speed = 1;
+
+		public bool isSolid = true;
+
+		public virtual void Update(GameTime gt) {}
+		public virtual void LoadContent() {}
+		public virtual void Draw(GameTime gt) { }
 
 		private Vector2 targetSpace;
 		public Vector2 TargetSpace {
@@ -43,7 +49,6 @@ namespace Essence {
 		public void RecalcTarget() {
 			Vector2 newPos = (position + (Dir * speed)) / 16 + Dir;
 			targetSpace = new Vector2((float) Math.Round(newPos.X) * 16, (float) Math.Round(newPos.Y) * 16);
-			//targetSpace = new Vector2(Dir == Direction.Left ? position.X - speed - (position.X - speed < 0 ? 16 + ((position.X - speed) % 16) : (position.X - speed) % 16) : (Dir == Direction.Right ? position.X + speed + 16 - (position.X + speed < 0 ? 16 + ((position.X + speed) % 16) : (position.X + speed) % 16) : position.X), Dir == Direction.Up ? position.Y - speed - (position.Y - speed < 0 ? 16 + ((position.Y - speed) % 16) : (position.Y - speed) % 16) : (Dir == Direction.Down ? position.Y + speed + 16 - (position.Y + speed < 0 ? 16 + ((position.Y + speed) % 16) : (position.Y + speed) % 16) : position.Y));
 		}
 
 		public bool AtOrPastTargetSpace(Vector2 pos) {
@@ -58,7 +63,7 @@ namespace Essence {
 				Dir = NextDir;
 				RecalcTarget();
 
-				if(game.TheWorld.IsTerrainSolid(targetSpace)) {
+				if(game.TheWorld.IsPositionOccupied(targetSpace)) {
 					moving = false;
 					targetSpace = position;
 				}
@@ -71,23 +76,6 @@ namespace Essence {
 
 				if(AtOrPastTargetSpace(newPosition)) position = targetSpace;
 				else position = newPosition;
-				
-				/*if(position.X > targetSpace.X && Dir == Direction.Left) {
-					if(NextDir == Direction.Left) position.X -= speed;
-					else position.X = Math.Abs(position.X - targetSpace.X) <= speed ? targetSpace.X : position.X - speed;
-				}
-				if(position.X < targetSpace.X && Dir == Direction.Right) {
-					if(NextDir == Direction.Right) position.X += speed;
-					else position.X = Math.Abs(position.X - targetSpace.X) <= speed ? targetSpace.X : position.X + speed;
-				}
-				if(position.Y > targetSpace.Y && Dir == Direction.Up) {
-					if(NextDir == Direction.Up) position.Y -= speed;
-					else position.Y = Math.Abs(position.Y - targetSpace.Y) <= speed ? targetSpace.Y : position.Y - speed;
-				}
-				if(position.Y < targetSpace.Y && Dir == Direction.Down) {
-					if(NextDir == Direction.Down) position.Y += speed;
-					else position.Y = Math.Abs(position.Y - targetSpace.Y) <= speed ? targetSpace.Y : position.Y + speed;
-				}*/
 			}
 		}
 	}
